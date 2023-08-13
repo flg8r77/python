@@ -1,4 +1,6 @@
 '''
+Prime Factors
+
 The prime factorization of an integer, n, can be determined using the following steps:
 
 Initialize factor to 2
