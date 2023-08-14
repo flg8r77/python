@@ -76,19 +76,6 @@ def ordinaldate(day, month, year):
             return days + day
     else:
         return days + day
-    
-
-    
-    
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     main()
