@@ -19,12 +19,22 @@ from ex91 import leapyear, georgian_to_ordinal, get_georgian_date
 
 def main():
 
+    return_period = 120
     georgian_day, georgian_month, georgian_year = get_georgian_date()
-
     ordinal_day, ordinal_year = georgian_to_ordinal(georgian_day, georgian_month, georgian_year)
-
-    print(f'Ordinal date is {ordinal_day} day of the year {ordinal_year}')
-
+    ordinal_day = ordinal_day + return_period
+    while True:
+        if leapyear(ordinal_year) and ordinal_day > 366:
+            ordinal_day = ordinal_day - 366
+            ordinal_year += 1
+        elif not leapyear(ordinal_year) and ordinal_day > 365:
+            ordinal_day = ordinal_day - 365
+            ordinal_year += 1
+        else:
+            break
+    final_day, final_month, final_year = ordinal_to_georgian(ordinal_year, ordinal_day)
+    print(f'Return ({return_period} days) valid until {final_day} {final_month}, {final_year}')
+         
 
 def get_ordinal_date():
     while True:
@@ -44,7 +54,6 @@ def get_ordinal_date():
             continue
         else:
             break
-    
     return day, year
 
 def ordinal_to_georgian(year, day):
@@ -62,10 +71,8 @@ def ordinal_to_georgian(year, day):
         11: {'month': 'November', 'days': 30},
         12: {'month': 'December', 'days': 31}
     }
-
     i = 1
     days_total = 0
-
     while True:
         if leapyear(year) and i == 2:
             days_total = days_total + 29
@@ -77,7 +84,6 @@ def ordinal_to_georgian(year, day):
             i += 1
     month = days_in_month[i]['month']
     day_of_month = day - (days_total - days_in_month[i]['days'])
-    
     return day_of_month, month, year
 
 if __name__ == "__main__":

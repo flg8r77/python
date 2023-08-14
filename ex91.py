@@ -22,17 +22,10 @@ into another program.
 def main():
     
     day, month, year = get_georgian_date()
-
     ordinalday, ordinalyear = georgian_to_ordinal(day, month, year)
-    
     print(f'{ordinalday} day of the year')
 
-
-
-
-
-def get_georgian_date():
-    
+def get_georgian_date():   
     days_in_month = {
         '1': 31,
         '2': 28,
@@ -47,7 +40,6 @@ def get_georgian_date():
         '11': 30,
         '12': 31
     }
-
     while True:
         try:
             year = int(input("Enter the year: "))
@@ -55,9 +47,7 @@ def get_georgian_date():
             continue
         else:
             break
-    
     leap_year = leapyear(year)
-    
     while True:
         try:
             month = int(input("Enter the month (number 1-12): "))
@@ -67,7 +57,6 @@ def get_georgian_date():
             continue
         else:
             break
-    
     while True:
         try:
             day = int(input("Enter the day (number): "))
@@ -79,11 +68,8 @@ def get_georgian_date():
             continue
         else:
             break
-    
     return day, month, year
     
-    
-
 def leapyear(year):
     if year % 4 == 0:
             if year % 100 == 0:
@@ -97,7 +83,6 @@ def leapyear(year):
         return False
 
 def georgian_to_ordinal(day, month, year):
-    
     days_dict = {
         '1': 31,
         '2': 28,
@@ -112,16 +97,13 @@ def georgian_to_ordinal(day, month, year):
         '11': 30,
         '12': 31
     }
-
     days = 0
     for i in range(1, month):
         days = days + days_dict[str(i)]
-    
     if month > 2 and leapyear(year):
         return days + day + 1,year
     else:
         return days + day, year
     
-
 if __name__ == "__main__":
     main()
