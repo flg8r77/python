@@ -20,7 +20,19 @@ into another program.
 '''
 
 def main():
+    
+    day, month, year = get_georgian_date()
 
+    ordinalday, ordinalyear = georgian_to_ordinal(day, month, year)
+    
+    print(f'{ordinalday} day of the year')
+
+
+
+
+
+def get_georgian_date():
+    
     days_in_month = {
         '1': 31,
         '2': 28,
@@ -68,8 +80,9 @@ def main():
         else:
             break
     
-    od = ordinaldate(day, month, year)
-    print(f'{od} day of the year')
+    return day, month, year
+    
+    
 
 def leapyear(year):
     if year % 4 == 0:
@@ -83,7 +96,7 @@ def leapyear(year):
     else:
         return False
 
-def ordinaldate(day, month, year):
+def georgian_to_ordinal(day, month, year):
     
     days_dict = {
         '1': 31,
@@ -105,9 +118,9 @@ def ordinaldate(day, month, year):
         days = days + days_dict[str(i)]
     
     if month > 2 and leapyear(year):
-        return days + day + 1
+        return days + day + 1,year
     else:
-        return days + day
+        return days + day, year
     
 
 if __name__ == "__main__":
