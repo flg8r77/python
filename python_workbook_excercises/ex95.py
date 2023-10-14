@@ -45,7 +45,7 @@ def capitalize_it(s):
     for word in outlist:
         outstring = f'{outstring} {word}'
 
-    return outstring
+    return outstring.strip()
 
 if __name__ == "__main__":
     main()
