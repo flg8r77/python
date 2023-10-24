@@ -1,0 +1,1 @@
+SELECT "first_name", "last_name", "birth_country" AS 'Born in' FROM "players" WHERE ("birth_country" != 'USA' and "birth_year" >= '2000') ORDER BY "first_name" ASC, "last_name" ASC;
