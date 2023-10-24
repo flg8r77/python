@@ -1,0 +1,1 @@
+SELECT "english_title" AS 'Hokusai top 5 complex artwork' FROM "views" WHERE "artist" = 'Hokusai' ORDER BY "entropy" DESC LIMIT 5;
